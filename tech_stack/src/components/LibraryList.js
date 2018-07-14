@@ -21,7 +21,7 @@ class LibraryList extends Component {
   }
 }
 
-// Take the global state object
+// Take the global state object and pass to component
 const mapStateToProps = state => {
   return { libraries: state.libraries };
 };
