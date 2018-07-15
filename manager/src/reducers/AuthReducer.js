@@ -1,9 +1,14 @@
 import { 
   EMAIL_CHANGED,
-  PASSWORD_CHANGED
+  PASSWORD_CHANGED,
+  LOGIN_USER_SUCCESS
 } from '../actions/types';
 
-const INITIAL_STATE = { email: '', password: '' }
+const INITIAL_STATE = { 
+  email: '', 
+  password: '',
+  user: null
+};
 
 export default (state = INITIAL_STATE, action) => {
   console.log(action);
@@ -13,10 +18,12 @@ export default (state = INITIAL_STATE, action) => {
       // Create a new object
       // Copy the contents of the current state object
       // Add a new key of email with value of action.payload
-      return { ...state, email: action.payload }
+      return { ...state, email: action.payload };
     case PASSWORD_CHANGED:
-      return { ...state, password: action.payload }
+      return { ...state, password: action.payload };
+    case LOGIN_USER_SUCCESS:
+      return { ...state, user: action.payload };
     default: 
       return state;
   }
-}
+};
