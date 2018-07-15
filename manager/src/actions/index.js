@@ -1,3 +1,5 @@
+import firebase from 'firebase';
+
 import { 
   EMAIL_CHANGED,
   PASSWORD_CHANGED 
@@ -7,12 +9,27 @@ export const emailChanged = (text) => {
   return {
     type: EMAIL_CHANGED,
     payload: text
-  }
-}
+  };
+};
 
 export const passwordChanged = (text) => {
   return {
     type: PASSWORD_CHANGED,
     payload: text
-  }
-}
+  };
+};
+
+export const loginUser = ({ email, password }) => {
+  // Can use return this function instead of an object due to redux thunk
+  // Dispatch automatically sends off to all reducers
+  return (dispatch) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+    .then(user => {
+      dispatch({ 
+        type: 'LOGIN_USER_SUCCESS',
+        payload: user
+      });
+    });
+  };
+};
+
