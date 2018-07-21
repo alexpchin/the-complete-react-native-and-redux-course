@@ -5,7 +5,6 @@ import firebase from 'firebase';
 // ReduxThunk is a middleware
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
-import LoginForm from './components/LoginForm';
 import Router from './Router';
 
 class App extends Component {
