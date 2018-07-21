@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { employeeUpdate } from '../actions';
 import { Card, CardSection, Input, Button } from './common';
-import { Picker } from 'react-native';
+import { Picker, Text } from 'react-native';
 
 class EmployeeCreate extends Component {
   render() {
@@ -28,9 +28,11 @@ class EmployeeCreate extends Component {
           />
         </CardSection>
 
-        <CardSection>
+        <CardSection style={{ flexDirection: 'column' }}>
+          <Text style={styles.pickerTextStyle}>Shift</Text>
           <Picker
-            style={{ flex: 1 }}
+            // Seems to cause a bug?
+            // style={{ flex: 1 }}
             selectedValue={this.props.shift}
             onValueChange={value => this.props.employeeUpdate({ prop: 'shift', value })}
           >
@@ -54,6 +56,13 @@ class EmployeeCreate extends Component {
     );
   }
 }
+
+const styles = {
+  pickerTextStyle: {
+    fontSize: 18,
+    paddingLeft: 20
+  }
+};
 
 const mapStateToProps = (state) => {
   // state.whatever needs to match in the key in the combineReducers call
