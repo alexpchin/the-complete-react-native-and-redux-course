@@ -7,6 +7,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "babel-plugin-transform-inline-environment-variables": "^0.4.3",
     "firebase": "^5.2.0",
     "lodash": "^4.17.10",
     "react": "16.4.1",
