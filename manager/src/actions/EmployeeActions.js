@@ -3,7 +3,8 @@ import { Actions } from 'react-native-router-flux';
 import { 
   EMPLOYEE_UPDATE,
   EMPLOYEE_CREATE,
-  EMPLOYEES_FETCH_SUCCESS
+  EMPLOYEES_FETCH_SUCCESS,
+  EMPLOYEE_SAVE_SUCCESS
 } from './types';
 
 // One action creator that can update any prop
@@ -46,6 +47,9 @@ export const employeeSave = ({ name, phone, shift, uid }) => {
   return (dispatch) => {
     firebase.database().ref(`/users/${currentUser.uid}/employees/${uid}`)
       .set({ name, phone, shift })
-      .then(() => console.log('saved!'));
+      .then(() => {
+        dispatch({ type: EMPLOYEE_SAVE_SUCCESS });
+        Actions.pop();
+      });
   };
 };

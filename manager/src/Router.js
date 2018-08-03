@@ -13,7 +13,6 @@ const RouterComponent = () => {
           <Scene key="login" component={LoginForm} title="Please login" initial />
         </Scene>
         <Scene key="main">
-          
           <Scene
             rightTitle="Add"
             // Needs to match the key below
